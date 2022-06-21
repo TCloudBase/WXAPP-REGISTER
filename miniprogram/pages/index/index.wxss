@@ -1,0 +1,124 @@
+page{
+    background-color: #f5f5f5;
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+::-webkit-scrollbar {
+  display: none;
+}
+
+.container{
+	background-color: #f5f5f5;
+	height: 100%;
+	width: 100%;
+	overflow-y: auto;
+	position: absolute;
+}
+
+.noscroll{
+	overflow-y: hidden;
+}
+
+.top_model{
+	width: 100%;
+	height: 400rpx;
+	overflow: hidden;
+	position: relative;
+}
+.top_model image{
+	width: 100%;
+}
+.top_model .title{
+	width: calc(100% - 40rpx);
+	position: absolute;
+	bottom: 0;
+	background-color: rgba(0, 0, 0, 0.65);
+	font-size: 30rpx;
+	line-height: 60rpx;
+	color: #FFFFFF;
+	padding: 20rpx;
+	font-weight: 900;
+	letter-spacing: 1px;
+}
+.info_model{
+	width: 100%;
+	background-color: #FFFFFF;
+}
+.info_model .item{
+	display: flex;
+	padding: 0 20rpx;
+	min-height: 100rpx;
+	font-size: 28rpx;
+	color: #343434;
+}
+.info_model .arrow_model:active{
+	background-color: #F5F5F5;
+}
+.info_model .item+.item{
+	border-top: 1px solid #e8e8e8;
+}
+.info_model .item .icon{
+	margin: 25rpx 0 auto;
+}
+.info_model .item .content{
+	margin: 25rpx 20rpx;
+	line-height: 50rpx;
+}
+.info_model .item .arrow{
+	margin: auto 0 auto auto;
+}
+.info_model .item .sign_btn{
+	width: 100%;
+	margin: 25rpx auto;
+	line-height: 80rpx;
+	height: 80rpx;
+	padding: 0;
+	color: #FFFFFF;
+	background: var(--backgroudColor);
+	color: var(--frontColor);
+  box-shadow: none;
+}
+
+.info_model .item .sign_btn:active{
+	opacity: 0.8;
+}
+
+.info_model .item .sign_btn[disabled] {
+	color: hsla(0,0%,100%,.8);
+	opacity: 1;
+}
+
+.content_model{
+	color: #343434;
+	width: calc(100% - 60rpx);
+	background-color: #ffffff;
+	margin-top: 20rpx;
+	padding: 30rpx;
+	font-size: 28rpx;
+	line-height: 50rpx;
+	padding-bottom: var(--safeBottom);
+}
+.content_model view{
+	width: 100%;
+}
+.content_model image{
+	width: 100%;
+	/* height: auto; */
+}
+.content_model view+view,.content_model image+view,.content_model view+image{
+	margin-top: 50rpx;
+}
+
+.content_model image+image{
+	margin-top: -16rpx;
+}
+
+.weui-half-screen-dialog{
+	height: 1200rpx;
+	overflow-y: auto;
+}
+
+.weui-half-screen-dialog__ft{
+	padding: 0 0 32px;
+}

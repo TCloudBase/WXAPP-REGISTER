@@ -1,0 +1,22 @@
+<wxs module="tool" src="./tool.wxs"></wxs>
+<mp-cells>
+    <block wx:for="{{list}}" wx:key="index">
+        <mp-cell icon="{{tool.cloudtohttp(item.info[project.signlist.img])}}" footer="{{['未报名','审核中','已通过','已拒绝'][item.open]}}" bindtap="{{admin?'toDetail':''}}" data-openid="{{index}}" data-info="{{item}}" hover="{{admin}}" link="{{admin}}">
+            <span>{{item.info[project.signlist.text]}}</span>
+            <div class="weui-cell__desc">{{item.time}}</div>
+        </mp-cell>
+    </block>
+</mp-cells>
+<mp-half-screen-dialog show="{{info.show}}" title="报名信息">
+	<mp-cells slot="desc">
+		<block wx:for="{{project.form}}" wx:key="id">
+			<mp-cell title="{{item.prop}}" ext-class="form_prop">
+                <image wx:if="{{item.type=='avatar'}}" class="weui-cell__icon" src="{{info.data[item.id]}}"></image>
+                <block wx:else>
+                    <span>{{info.data[item.id]}}</span>
+                </block>
+                <view wx:if="{{item.unit!=null}}" slot="footer">{{item.unit}}</view>
+            </mp-cell>
+		</block>
+	</mp-cells>
+</mp-half-screen-dialog>

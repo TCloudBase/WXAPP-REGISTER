@@ -1,0 +1,57 @@
+.weui-cells {
+    margin-top: 0px;
+}
+
+.weui-cell__icon{
+	width: 40px;
+	height: 40px;
+    margin-right: 16px;
+    display: block;
+}
+
+.weui-cell__bd {
+	display: flex;
+	flex-direction: column;
+}
+
+.weui-cell__desc{
+	font-size: 12px;
+	color: rgba(0,0,0,0.3);
+	color: var(--weui-FG-2);
+	line-height: 1.4;
+	padding-top: 4px;
+}
+
+.form_prop{
+	font-size: 28rpx;
+}
+
+.form_prop .weui-cell__hd{
+	width: 130rpx;
+}
+
+.form_prop .avatar-wrapper{
+	width: 100rpx;
+	height: 100rpx;
+	padding: 0;
+	margin: 0 !important;
+}
+
+.form_prop .avatar-wrapper image{
+	width: 100%;
+	height: 100%;
+}
+
+.form_prop .novalue{
+	color: #808080;
+}
+
+.form_prop .input_btn{
+	background-color: #ffffff;
+	font-size: 28rpx;
+	padding: 0;
+	margin: 0 !important;
+	text-align: left;
+	width: auto;
+	font-weight: normal;
+}

@@ -1,0 +1,114 @@
+function cloudtohttp (url) {
+  var res = url
+  if (url.indexOf('cloud://') === 0) {
+    var first = url.indexOf('.')
+    var end = url.indexOf('/', first)
+    res = 'https://' + url.slice(first + 1, end) + '.tcb.qcloud.la/' + url.slice(end + 1, url.length) + '?' + Date.now()
+  }
+  return res
+}
+
+function execTime (time) {
+  var now = Date.now()
+  if (time.map != null && time.length === 2) {
+    var starttime = Date.parse(time[0].replace(getRegExp('(月|年)', 'g'), '/').replace('日', ''))
+    var stoptime = Date.parse(time[1].replace(getRegExp('(月|年)', 'g'), '/').replace('日', ''))
+    if (now < starttime) {
+      return {
+        open: false,
+        text: '报名开始时间：' + time[0]
+      }
+    } else if (now < stoptime) {
+      return {
+        open: true,
+        text: '报名截止时间：' + time[1]
+      }
+    } else {
+      return {
+        open: false,
+        text: '报名截止时间：' + time[1]
+      }
+    }
+  } else if (time.map != null && time.length === 1) {
+    var starttime = Date.parse(time[0].replace(getRegExp('(月|年)', 'g'), '/').replace('日', ''))
+    if (now < starttime) {
+      return {
+        open: false,
+        text: '报名时间：' + time[0]
+      }
+    } else {
+      return {
+        open: true,
+        text: '报名时间：' + time[0]
+      }
+    }
+  } else {
+    return {
+      open: true,
+      text: '无报名期限'
+    }
+  }
+}
+
+var sign_btnlist = [{
+  type: 'default',
+  className: '',
+  text: '取消',
+  value: 0
+}, {
+  type: 'primary',
+  className: '',
+  text: '提交报名',
+  value: 1
+}, {
+  type: 'primary',
+  className: '',
+  text: '修改报名',
+  value: 1
+}, {
+  type: 'warn',
+  className: '',
+  text: '取消报名',
+  value: 2
+}]
+
+function signBtnstatus (useropen, time) {
+  var res = {
+    text: '',
+    disable: false,
+    btnlist: [sign_btnlist[0], sign_btnlist[1]],
+    title: '报名信息填写'
+  }
+  if (useropen === 0) {
+    var open = execTime(time).open
+    if (open === false) {
+      res.text = '报名关闭'
+      res.disable = true
+    } else {
+      res.text = '立即报名'
+      res.disable = false
+    }
+  } else if (useropen === 1) {
+    res.text = '已报名，审核中'
+    res.disable = false
+    res.title = '报名信息-审核中'
+    res.btnlist = [sign_btnlist[3], sign_btnlist[2]]
+  } else if (useropen === 2) {
+    res.text = '已通过报名'
+    res.disable = false
+    res.title = '报名信息-已通过'
+    res.btnlist = []
+  } else if (useropen === 3) {
+    res.text = '报名未通过'
+    res.disable = false
+    res.title = '报名信息-未通过'
+    res.btnlist = []
+  }
+  return res
+}
+
+module.exports = {
+  cloudtohttp: cloudtohttp,
+  execTime: execTime,
+  signBtnstatus: signBtnstatus
+}

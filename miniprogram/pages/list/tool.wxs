@@ -1,0 +1,13 @@
+function cloudtohttp (url) {
+  var res = url
+  if (url.indexOf('cloud://') === 0) {
+    var first = url.indexOf('.')
+    var end = url.indexOf('/', first)
+    res = 'https://' + url.slice(first + 1, end) + '.tcb.qcloud.la/' + url.slice(end + 1, url.length) + '?' + Date.now()
+  }
+  return res
+}
+
+module.exports = {
+  cloudtohttp: cloudtohttp
+}

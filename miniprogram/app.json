@@ -1,0 +1,15 @@
+{
+	"pages": [
+		"pages/index/index",
+		"pages/list/list"
+	],
+	"window": {
+		"navigationBarTextStyle": "white"
+	},
+	"useExtendedLib": {
+		"weui": true
+	},
+	"style": "v2",
+	"sitemapLocation": "sitemap.json",
+	"lazyCodeLoading": "requiredComponents"
+}

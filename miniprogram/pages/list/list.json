@@ -1,0 +1,11 @@
+{
+    "usingComponents": {
+        "mp-half-screen-dialog": "weui-miniprogram/half-screen-dialog/half-screen-dialog",
+        "mp-cells": "weui-miniprogram/cells/cells",
+        "mp-cell": "weui-miniprogram/cell/cell"
+    },
+    "navigationBarTitleText": "报名列表",
+    "navigationBarBackgroundColor": "#ffffff",
+    "enablePullDownRefresh":true,
+    "backgroundTextStyle":"light"
+}

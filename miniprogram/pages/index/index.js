@@ -130,9 +130,22 @@ Page({
         }
       }
       wx.showLoading({ title: '提交中' })
-      await app.call({ name: 'add_sign', data: { id: project._id, input } })
-      await that.init()
-      wx.hideLoading()
+			const submitres = await app.call({ name: 'add_sign', data: { id: project._id, input } })
+			wx.hideLoading()
+			if(submitres.code === 0){
+				await that.init()
+			} else {
+				showModal(submitres.msg||'系统出现问题，请稍后再试','安全提示',{
+					showCancel: true,
+					confirmText: '重新编辑'
+				}).then(flag=>{
+					if (flag) {
+						that.setData({
+							'form.show': true
+						})
+					}
+				})
+			}
     } else if (e.detail?.item?.value === 2) {
       const flag = await showModal('是否取消报名，取消后需要重新填写审核', '确认操作', {
         showCancel: true
@@ -167,7 +180,7 @@ Page({
 function showModal (content, title = '', obj = {}) {
   return new Promise((resolve) => {
     wx.showModal({
-      cancelText: obj.confirmText || '取消',
+      cancelText: obj.cancelText || '取消',
       confirmColor: that.data.project?.style?.backgroudColor || '#07c041',
       confirmText: obj.confirmText || '确定',
       title: title,
